@@ -1,0 +1,31 @@
+.app-sidenav-container {
+  flex: 1;
+  height: 100%;
+  min-height: 100%;
+  position: fixed;
+  width: 100%;
+  min-width: 100%;
+}
+
+.app-sidenav {
+  width: 250px;
+}
+
+.wrapper {
+  margin: 25px;
+}
+
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.small-usuario-rol {
+  margin: 15px;
+  opacity: 0.5;
+}
+
+.card-usuario-body {
+  margin: 15px;
+}

@@ -1,0 +1,60 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav #sidenav class="app-sidenav mat-elevation-z5" [opened]="!pantallaSmall()" [mode]="pantallaSmall()?'over':'side'">
+    <!-- Inicio de Login -->
+    <mat-toolbar *ngIf="!getData">
+      <div class="usuario-head">
+        <h1>Login</h1>
+      </div>
+    </mat-toolbar>
+    <mat-card class="card-usuario-body" *ngIf="!getData">
+      <mat-card-content>
+        <p>Email</p>
+        <input type="text" [(ngModel)]="email" name="email">
+        <p>Password</p>
+        <input type="text" [(ngModel)]="password" name="password">
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="Email()">Ingresar</button>
+        <button mat-button>No tienes una cuenta?</button>
+      </mat-card-actions>
+    </mat-card>
+    <!-- Fin de Login -->
+
+    <!-- Inicio de Informacion de Usuario -->
+    <mat-toolbar *ngIf="getData">
+      <div class="usuario-head">
+        <h2>{{ getData.content.nombre }}</h2>
+        <small class="small-usuario-rol">{{ getData.content.tipoArtista }}</small>
+      </div>
+    </mat-toolbar>
+
+    <mat-card class="card-usuario-body" *ngIf="getData">
+      <img mat-card-image src="./../../../assets/fPerfil.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{ getData.content.descripcion }} </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Seguir</button>
+        <button mat-button>Mensaje</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-nav-list *ngIf="getData">
+      <mat-list-item> <a mat-list-item href="#">Perfil</a> </mat-list-item>
+      <mat-list-item> <a mat-list-item [routerLink]="'/canciones'"> Canciones </a> </mat-list-item>
+      <mat-list-item> <a mat-list-item href="#">Videos</a> </mat-list-item>
+      <mat-list-item> <a mat-list-item href="#">Seguidores</a> </mat-list-item>
+    </mat-nav-list>
+    <!-- Fin de Informacion de Usuario -->
+  </mat-sidenav>
+  <!-- contenido de sidenav -->
+  <mat-sidenav-content>
+    <div class="app-sidenav-content">
+      <tk-toolbar (emisor)="sidenav.toggle()"></tk-toolbar>
+      <!-- <button mat-button color="primary" (click)="sidenav.toggle()">Toggle</button> -->
+      <div class="wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
